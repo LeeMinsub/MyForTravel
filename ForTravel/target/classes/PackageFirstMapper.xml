@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fortravel.PackageFirstMapper">
+ <select id="packageNewlist" resultType="PackageFirstDTO">
+    <![CDATA[
+ 		select packageno,
+ 			packagename,
+ 			price,
+ 			image,
+ 			term,
+ 			loc
+ 		from (select packageno,
+ 			packagename,
+ 			price,
+ 			image,
+ 			term,
+ 			loc
+ 		from packagemain
+ 		order by price)
+ 		where rownum<=3
+ 		]]>
+ 	</select>
+   
+    
+     <select id="countryAllList" parameterType="string" resultType="PackageFirstDTO">
+     
+    	select packageno,packagename,price,image,term,loc 
+    	from packagemain
+    	where loc = #{loc} 
+    	order by price asc
+    	
+    </select>
+
+
+</mapper>

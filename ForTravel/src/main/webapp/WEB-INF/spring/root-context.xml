@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+<!-- DB정보 설정 -->
+<context:property-placeholder location="classpath:jdbc.properties"/>
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+<property name="dataSource" ref="dataSource"/>
+</bean>
+<!-- 트랜잭션 매니저 값은 id값이 transactionManager 이면 생략 가능 
+딴거 주면 xx 주면 xx 줘야 한다 
+밑에 문장에서 transaction-manager 생략 가능 안까먹을라고써놓은거임 
+ -->
+<tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+ <!-- jdbc.properties 값을 이용해서 Connection 맺기 -->
+   <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+      <property name="driverClassName" value="${jdbc.driver}" />
+      <property name="url" value="${jdbc.url}" />
+      <property name="username" value="${jdbc.userid}" />
+      <property name="password" value="${jdbc.passwd}" />
+    </bean>
+    
+    <!-- Mybatis의 SqlSessionFactory 역할의 빈 등록-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="mapperLocations" value="classpath:*Mapper.xml" />
+      <property name="typeAliases">
+       <list>
+        <value>com.entity.BannerImageDTO</value>
+        <value>com.entity.MemberDTO</value>
+        <value>com.entity.PackageFirstDTO</value>
+        <value>com.entity.PackageThirdDTO</value>
+        <value>com.entity.ReviewBoardDTO</value>
+        <value>com.entity.ReviewReplyDTO</value>
+        <value>com.entity.MemberDTO</value>
+        <value>com.entity.ReviewBoardPageDTO</value>
+        <value>com.entity.QABoardDTO</value>
+       </list>
+      </property>
+    </bean>
+    
+    <!-- MyBatis의 SqlSession 역할 빈 등록 -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg 
+           ref="sqlSessionFactory" />
+    </bean>
+<!--     
+    <bean id="dao" class="com.dao.DeptDAO">
+     <property name="template" ref="sqlSession" />
+    </bean>
+    
+     <bean id="deptService" class="com.service.DeptService">
+     <property name="dao" ref="dao" />
+     </bean> -->
+<context:component-scan base-package="com.*"></context:component-scan>     
+     
+</beans>

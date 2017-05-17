@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fortravel.MemberMapper">
+ 	<select id="idCheck" parameterType="string" 
+  resultType="int">
+   select count(*)
+   from member
+   where userid = #{userid}
+  </select>
+  
+	<insert id="memberJoin" parameterType="MemberDTO">
+	 <![CDATA[
+	insert into member (userid, passwd, username, post1, post2, addr1, addr2, phone1, phone2, phone3, email1, email2, birth)
+	values(#{userid},#{passwd},#{username},#{post1},#{post2},#{addr1},#{addr2},#{phone1},#{phone2},#{phone3},#{email1},#{email2},to_date(#{birth},'RRRR-MM-DD'))
+	]]>
+	</insert>
+	
+	<select id="login" parameterType="hashmap" 
+   resultType="MemberDTO">
+     select *
+     from member
+     where userid = #{userid} and passwd=#{passwd}
+   </select>
+	
+</mapper>

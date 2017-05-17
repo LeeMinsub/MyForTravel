@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReviewBoardMapper">
+<select id="staticReview" parameterType="hashmap" resultType="ReviewBoardDTO">
+	<![CDATA[
+	select num,title,userid,content,to_char(writeday,'YYYY/MM/dd')
+		writeday,readcnt,travelNation,travelLoc,image1,image2,image3
+		from
+		reviewboard
+		where to_char(writeday,'YYYY/MM/dd') <= #{enddate} and
+		to_char(writeday,'YYYY/MM/dd') >= #{startdate} 
+		]]>
+</select>
+<select id="bestredcnt" parameterType="int" resultType="ReviewBoardDTO">
+	<![CDATA[
+		select
+		num,title,content,userid,writeday,readcnt,travelNation,travelLoc,image1,image2,image3
+		from reviewboard
+		where readcnt >= #{readcnt} and rownum <= 3
+		order by readcnt desc
+		]]>
+	</select>
+	 
+	<select id="ReviewBoardSelect" resultType="ReviewBoardDTO">
+		select
+		num,title,content,userid,writeday,readcnt,travelNation,travelLoc,image1,image2,image3
+		from reviewboard
+	</select>
+	<select id="totalrecord" resultType="int">
+		select count(*)
+		from
+		reviewboard
+	</select>
+	<select id="locSelect" parameterType="hashmap" resultType="String">
+		select travelloc
+		from reviewboard
+		<if test="travelNation!='전체보기'">
+			where TRAVELNATION=#{travelNation}
+		</if>
+		GROUP BY travelloc
+		order by 1
+	</select>
+	<select id="boardNewPage" parameterType="hashmap" resultType="ReviewBoardDTO">
+		select num,title,userid,content,to_char(writeday,'YYYY/MM/dd')
+		writeday,readcnt,travelNation,travelLoc,image1,image2,image3
+		from
+		reviewboard
+		<if test="travelNation!='전체보기'">
+			where travelNation=#{travelNation}
+			<if test="searchName != null">
+				<if test="searchName=='title'">
+					and title like '%'||#{searchValue}||'%'
+				</if>
+				<if test="searchName=='userid'">
+					and userid like '%'||#{searchValue}||'%'
+				</if>
+			</if>
+			<if test="travelLoc!='전체보기'">
+				and travelLoc=#{travelLoc}
+				<if test="searchName != null">
+					<if test="searchName=='title'">
+						and title like '%'||#{searchValue}||'%'
+					</if>
+					<if test="searchName=='userid'">
+						and userid like '%'||#{searchValue}||'%'
+					</if>
+				</if>
+			</if>
+		</if>
+		<if test="travelNation=='전체보기'">
+			<if test="searchName != null">
+				<if test="searchName=='title'">
+					where title like '%'||#{searchValue}||'%'
+				</if>
+				<if test="searchName=='userid'">
+					where userid like '%'||#{searchValue}||'%'
+				</if>
+			</if>
+		</if>
+		<if test="orders != null">
+			<if test="orders=='writeday'">
+				order by writeday desc
+			</if>
+			<if test="orders=='readcnt'">
+				order by readcnt desc
+			</if>
+		</if>
+	</select>
+	
+	<update id="ReviewReadcntUpdate" parameterType="int">
+		update reviewboard
+		set readcnt =readcnt +1
+		where num = #{num}
+	</update>
+	<select id="boardRetrieve" resultType="ReviewBoardDTO" parameterType="int">
+		select num,title,content,userid,writeday,readcnt,travelNation,travelLoc,image1,image2,image3
+		from reviewboard
+		where num = #{num}
+	</select>
+	<insert id="reviewBoardWrite" parameterType="hashmap">
+	insert into  reviewboard ( num,title,content,userid,readcnt,travelNation,travelLoc,image1)
+    values ( reviewboard_seq.nextval, #{title},#{content},#{userid},0
+    ,#{travelNation},#{travelLoc},#{image1})
+	</insert>
+	
+	<update id="reviewBoardUpdate" parameterType="hashmap">
+		update reviewboard
+		set title=#{title}, content=#{content},
+		travelNation=#{travelNation},travelLoc=#{travelLoc},
+		image1=#{image1}
+		where num = #{num}
+	</update>
+	<delete id="reviewBoardDelete" parameterType="int">
+		delete from reviewboard
+		where num= #{num}
+	</delete>
+</mapper>
