@@ -11,6 +11,7 @@
 	<mvc:default-servlet-handler/>
 	
 		<bean id="home" class="com.controller.HomeController"/>
+		<bean id="reviwboard" class="com.controller.ReviewBoardController"/>
 <!-- jsp 전담 뷰리저버 -->
 	<bean id="" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/"/>

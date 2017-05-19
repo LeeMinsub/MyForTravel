@@ -17,15 +17,15 @@
 <script src="./jqueryMobile/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/mainSerch.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/mainSerch.css" rel="stylesheet">
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="css/modern-business.css" rel="stylesheet">
+<link href="resources/css/modern-business.css" rel="stylesheet">
 
 
 <!-- Custom Fonts -->
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+<link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
     
     <script type="text/javascript" language="JavaScript">
@@ -258,10 +258,10 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="resources/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
 
     <!-- Script to Activate the Carousel -->
     <script>

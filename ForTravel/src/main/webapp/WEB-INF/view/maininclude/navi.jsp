@@ -214,7 +214,7 @@
 					</ul></li>
 					 
 				<li class="dropdown">
-                        <a href="ReviewBoardController" class="dropdown-toggle" style="color:white;">여행후기 </a>
+                        <a href="ReviewBoard" class="dropdown-toggle" style="color:white;">여행후기 </a>
                     </li>		
                      <li class="dropdown">
                         <a href="NoticeUIController" class="dropdown-toggle" style="color:white;">공지사항 </a> 

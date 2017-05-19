@@ -68,7 +68,6 @@ public class ReviewBoardService {
 		}//end total record
 */	
 	public ReviewBoardPageDTO boardNewPage(HashMap<String, String> map){
-		
 		return dao.boardNewPage(map);
 	}
 	

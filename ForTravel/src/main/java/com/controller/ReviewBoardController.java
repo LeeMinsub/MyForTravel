@@ -1,6 +1,11 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.entity.BannerImageDTO;
 import com.entity.PackageFirstDTO;
 import com.entity.ReviewBoardDTO;
+import com.entity.ReviewBoardPageDTO;
 import com.exception.CommonException;
 import com.service.BannerImageService;
 import com.service.PackageFirstService;
 import com.service.ReviewBoardService;
+import com.service.ReviewReplyService;
 
 @Controller
 public class ReviewBoardController {
@@ -22,21 +29,66 @@ public class ReviewBoardController {
 	@Autowired
 	private ReviewBoardService ReviewService;
 	@Autowired
-	private PackageFirstService PackageFirstService;
-	@Autowired
-	private BannerImageService BannerImageService;
+	private ReviewReplyService ReviewReplyService;
 	
-	@RequestMapping("/Home")
-	public String home(Model m) throws CommonException{
-		BannerImageDTO bannerdto=BannerImageService.BannerImageSelect();
-		List<ReviewBoardDTO> reviewList=ReviewService.bestredcnt(readcnt);
-		List<PackageFirstDTO> packageList=PackageFirstService.packageNewlist();
+	
+	
+	@RequestMapping("/ReviewBoard")
+	public String Review(HttpServletRequest request,HttpServletResponse response,HttpSession session) throws CommonException{
+		String curpage=request.getParameter("curpage");
+		String perPage=request.getParameter("perPageCount");
+		String orders=request.getParameter("orders");
+		String travelNation=request.getParameter("travelNation");
+		String travelLoc=request.getParameter("travelLoc");
+		String searchName=request.getParameter("searchName");
+		String searchValue = request.getParameter("searchValue");
+		if(perPage==null) perPage="3";
+		if(curpage==null) curpage="1";
+		if(travelNation==null) travelNation="전체보기";
+		if(travelLoc==null) travelLoc="전체보기";
+		if(orders==null) orders="writeday";
 		
-		m.addAttribute("Plist", packageList);
-		m.addAttribute("Plist2", reviewList);
-		m.addAttribute("bannerdto", bannerdto);
-		System.out.println(bannerdto);
-		return "main";
+		HashMap<String, String> map=new HashMap<>();
+		map.put("curpage", curpage);
+		map.put("perPage", perPage);
+		map.put("orders", orders);
+		map.put("travelNation", travelNation);
+		map.put("travelLoc", travelLoc);
+		map.put("searchName", searchName);
+		map.put("searchValue", searchValue);
+		
+		session.setAttribute("hmap", map);
+		session.setAttribute("curpage", curpage);
+		session.setAttribute("perPage", perPage);
+		session.setAttribute("orders", orders);
+		session.setAttribute("travelNation", travelNation);
+		session.setAttribute("travelLoc", travelLoc);
+		session.setAttribute("searchName", searchName);
+		session.setAttribute("searchValue", searchValue);
+		session.setAttribute("pageCount", 3);
+		
+		List<String> locList=ReviewService.locSelect(map);
+		ReviewBoardPageDTO pageDTO=ReviewService.boardNewPage(map);
+		
+		int endPageCount=0;
+		int startPageCount=0;
+		int totalrecord = pageDTO.getTotalrecord(); 
+		int pageCount = (int)session.getAttribute("pageCount");
+		int totalPageCount=totalrecord/Integer.parseInt(perPage);
+		session.setAttribute("totalPageCount", totalPageCount);
+		
+		if(session.getAttribute("endPageCount") ==null) {
+			endPageCount=3;
+			session.setAttribute("endPageCount", endPageCount);
+		}
+			
+		if(session.getAttribute("startPageCount") ==null){ 
+			startPageCount=1;
+			session.setAttribute("startPageCount", startPageCount);
+		}
+		session.setAttribute("pageDTO", pageDTO);
+		session.setAttribute("locList", locList);
+		return "ReviewBoard";
 	}
 	
 	/*//1.목록보기

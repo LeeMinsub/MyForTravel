@@ -35,7 +35,6 @@ public class HomeController {
 		m.addAttribute("Plist", packageList);
 		m.addAttribute("Plist2", reviewList);
 		m.addAttribute("bannerdto", bannerdto);
-		System.out.println(bannerdto);
 		return "main";
 	}
 	
