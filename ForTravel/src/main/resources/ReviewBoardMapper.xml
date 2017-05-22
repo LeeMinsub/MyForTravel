@@ -23,15 +23,55 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	 
-	<select id="ReviewBoardSelect" resultType="ReviewBoardDTO">
+	<select id="ReviewBoardSelect"  resultType="ReviewBoardDTO">
 		select
 		num,title,content,userid,writeday,readcnt,travelNation,travelLoc,image1,image2,image3
 		from reviewboard
 	</select>
-	<select id="totalrecord" resultType="int">
+	<select id="totalrecord"  parameterType="hashmap" resultType="int">
 		select count(*)
 		from
 		reviewboard
+		<if test="travelNation!='전체보기'">
+			where travelNation=#{travelNation}
+			<if test="searchName != null">
+				<if test="searchName=='title'">
+					and title like '%'||#{searchValue}||'%'
+				</if>
+				<if test="searchName=='userid'">
+					and userid like '%'||#{searchValue}||'%'
+				</if>
+			</if>
+			<if test="travelLoc!='전체보기'">
+				and travelLoc=#{travelLoc}
+				<if test="searchName != null">
+					<if test="searchName=='title'">
+						and title like '%'||#{searchValue}||'%'
+					</if>
+					<if test="searchName=='userid'">
+						and userid like '%'||#{searchValue}||'%'
+					</if>
+				</if>
+			</if>
+		</if>
+		<if test="travelNation=='전체보기'">
+			<if test="searchName != null">
+				<if test="searchName=='title'">
+					where title like '%'||#{searchValue}||'%'
+				</if>
+				<if test="searchName=='userid'">
+					where userid like '%'||#{searchValue}||'%'
+				</if>
+			</if>
+		</if>
+		<if test="orders != null">
+			<if test="orders=='writeday'">
+				order by writeday desc
+			</if>
+			<if test="orders=='readcnt'">
+				order by readcnt desc
+			</if>
+		</if>
 	</select>
 	<select id="locSelect" parameterType="hashmap" resultType="String">
 		select travelloc

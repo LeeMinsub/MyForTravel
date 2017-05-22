@@ -62,8 +62,8 @@ public class ReviewDAO {
 	}
 	//전체 레코드
 	
-	private int totalrecord(){
-			return template.selectOne("ReviewBoardMapper.totalrecord");
+	private int totalrecord(HashMap<String, String> map){
+			return template.selectOne("ReviewBoardMapper.totalrecord",map);
 		}//end total record
 	
 	public ReviewBoardPageDTO boardNewPage(HashMap<String, String> map){
@@ -78,7 +78,7 @@ public class ReviewDAO {
 		list=template.selectList("ReviewBoardMapper.boardNewPage", map, new RowBounds(skip,page.getPerpage()));
 		page.setList(list);
 		page.setCurpage(curPage);
-		page.setTotalrecord(totalrecord());
+		page.setTotalrecord(totalrecord(map));
 		
 		return page;
 	}

@@ -217,26 +217,26 @@
                         <a href="ReviewBoard" class="dropdown-toggle" style="color:white;">여행후기 </a>
                     </li>		
                      <li class="dropdown">
-                        <a href="NoticeUIController" class="dropdown-toggle" style="color:white;">공지사항 </a> 
+                        <a href="NoticeUI" class="dropdown-toggle" style="color:white;">공지사항 </a> 
                     </li>
                     <li class="dropdown">
-                        <a href="QABoardListController" class="dropdown-toggle" style="color:white;">FAQ</a>
+                        <a href="QABoardList" class="dropdown-toggle" style="color:white;">FAQ</a>
                     </li>
                     <c:if test="${login == null }">
                      <li class="dropdown">
-                        <a href="LoginUIController" class="dropdown-toggle" style="color:white;">로그인 </a>
+                        <a href="LoginUI" class="dropdown-toggle" style="color:white;">로그인 </a>
                     </li>
                     </c:if>
                     <c:if test="${login != null }">
                      <li class="dropdown">
-                        <a href="LogOutController" class="dropdown-toggle" style="color:white;">로그아웃 </a>
+                        <a href="LogOut" class="dropdown-toggle" style="color:white;">로그아웃 </a>
                     </li>
                     </c:if>
                      <li class="dropdown">
-                        <a href="SignUPController" class="dropdown-toggle" style="color:white;">회원가입 </a>
+                        <a href="SignUP" class="dropdown-toggle" style="color:white;">회원가입 </a>
                     </li>
                      <li class="dropdown">
-                        <a href="SiteMapController" class="dropdown-toggle" style="color:white;"><!-- data-toggle="dropdown" -->회사소개 </a>  
+                        <a href="SiteMap" class="dropdown-toggle" style="color:white;"><!-- data-toggle="dropdown" -->회사소개 </a>  
                     </li>
                  
 			</ul> 

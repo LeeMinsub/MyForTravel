@@ -17,6 +17,7 @@ public class MemberService {
 	
 	 public MemberDTO login(HashMap<String, String> map)
 	    		throws CommonException{
+		 System.out.println("dao   :::::::::"+dao.login(map));
 			return dao.login(map);
 	    }//end login
 	

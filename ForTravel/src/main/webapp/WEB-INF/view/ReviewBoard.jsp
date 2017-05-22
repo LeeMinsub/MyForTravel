@@ -7,11 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<!-- <meta property="og:url" content="http://192.168.0.41:8090/4Travel/ReviewBoardController">
-    <meta property="og:title" content="4Travel">
-    <meta property="og:description" content="4Travel입니다">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="images/background01.jpg"> -->
+
 <title>Insert title here</title>
 <!-- Bootstrap Core CSS -->
 <link href="css/mainSerch.css" rel="stylesheet">
@@ -23,6 +19,11 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
+	    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
 <style type="text/css">
 .udbutton{
 	 position: relative;
@@ -185,14 +186,12 @@
 			</c:if>
 			<div class="title">
 				<h3>
-					<a href="ReviewBoardDetailController?num=${dto.num}">${dto.title}</a>
+					<a href="ReviewBoardDetail?num=${dto.num}">${dto.title}</a>
 				</h3>
 				<p>
 					by <a style="color: black; text-decoration: none;">${dto.userid}</a>
 				</p>
 				<p>${dto.content}</p>
-				<%-- <a class="btn btn-primary" href="ReviewBoardDetailController?num=${dto.num}">Read More <i
-					class="fa fa-angle-right"></i></a> --%> 
 			</div>
 			
 		</div>
@@ -220,10 +219,10 @@
 			<div class="col-lg-12">
 				<ul class="pagination">
 					<li><c:if test="${curpage != 1}">
-						<p><a href="ReviewBoard?curPage=1&travelNation=${travelNation}&travelLoc=${travelLoc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">[처음]</a>
+						<p><a href="ReviewBoard?curpage=1&travelNation=${travelNation}&travelLoc=${travelLoc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">[처음]</a>
 					</c:if>
 					<c:if test="${pageblock > 1}">
-						<a href="ReviewBoard?curPage=${Math.round((pageblock*page)-19)}&travelNation=${travelNation}&travelLoc=${travelLoc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">
+						<a href="ReviewBoard?curpage=${Math.round((pageblock*page)-3)}&travelNation=${travelNation}&travelLoc=${travelLoc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">
 							&laquo;
 						</a></c:if></li>
 						<c:if test="${pageblock < 1}">
@@ -240,13 +239,13 @@
 						</c:if>
 					</c:forEach>
 					<li><c:if test="${pageblock != Math.ceil((totalRecord/perPage+1)/page)}">
-						<a href="ReviewBoard?curPage=${Math.round((pageblock*page)+1)}&travelNation=${travelNation}&travelLoc=${travelLoc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">
+						<a href="ReviewBoard?curpage=${Math.round((pageblock*page)+1)}&travelNation=${travelNation}&travelLoc=${travelLoc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">
 							&raquo;
 						</a>
 					</c:if>
 					
 					<c:if test="${curPage != Math.ceil(totalRecord/perPage)}">
-						<a href="ReviewBoard?curPage=${Math.round((totalRecord/perPage ))}&travelNation=${travelNation}&travelLoc=${travelLoc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">
+						<a href="ReviewBoard?curpage=${Math.round((totalRecord/perPage ))}&travelNation=${travelNation}&travelLoc=${travelLoc}&orders=${orders}&searchName=${searchName}&searchValue=${searchValue}">
 							[끝]
 						</a>
 					</c:if></li>
