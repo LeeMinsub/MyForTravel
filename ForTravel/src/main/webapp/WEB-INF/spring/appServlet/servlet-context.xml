@@ -7,9 +7,21 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	<context:annotation-config/>
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+        <!-- @ResponseBody로 String 처리할때 한글처리 -->
+        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+            <property name="supportedMediaTypes">
+                <list>
+                    <value>text/html;charset=UTF-8</value>
+                </list>
+            </property>
+        </bean>
+    </mvc:message-converters>
+	</mvc:annotation-driven>
 	<mvc:default-servlet-handler/>
-	
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
+	<mvc:resources location="file:///c:/temp/upload/" mapping="/file/**"/>
 		<bean id="home" class="com.controller.HomeController"/>
 		<bean id="reviwboard" class="com.controller.ReviewBoardController"/>
 		<bean id="login" class="com.controller.LoginController"/>

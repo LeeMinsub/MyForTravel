@@ -17,7 +17,7 @@
 </span>
 <div>
 <a href="Home">
-<img id = "logimg" alt="로고" src="images/log2.png"></a>
+<img id = "logimg" alt="로고" src="resources/images/log2.png"></a>
 </div>
 <div>
 <form action="" method="get">

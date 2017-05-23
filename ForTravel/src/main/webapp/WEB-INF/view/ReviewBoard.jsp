@@ -10,21 +10,25 @@
 
 <title>Insert title here</title>
 <!-- Bootstrap Core CSS -->
-<link href="css/mainSerch.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/mainSerch.css" rel="stylesheet">
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="resources/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+    <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
-	    <script src="js/jquery.js"></script>
+    <script src="resources/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
 <style type="text/css">
+p.contentHidden{
+	height:10%;
+    overflow: hidden;
+}
 .udbutton{
 	 position: relative;
     float: right;
@@ -55,10 +59,7 @@
    <jsp:include page="maininclude/Serch.jsp" flush="true"/>
 <jsp:include  page="maininclude/navi.jsp" flush="true"/>
 
-<!-- CSS -->
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#loc").css("display","none");	
@@ -150,7 +151,7 @@
 					</form>
 				</li>
 				<li>
-				<a href="ReviewBoardWriteUIController">후기 작성하기</a>
+				<a href="ReviewBoardWriteUI">후기 작성하기</a>
 				</li>
 			</ol>
 		</div>
@@ -180,7 +181,7 @@
 				<div class="reviewimg">  
 					<a href="#"> 
 					<img class="img-responsive img-hover"
-						src="/4Travel/images/${image_array[0]}"  alt="">
+						src="file/${image_array[0]}"  alt="">
 				</a>
 				</div>
 			</c:if>
@@ -191,7 +192,7 @@
 				<p>
 					by <a style="color: black; text-decoration: none;">${dto.userid}</a>
 				</p>
-				<p>${dto.content}</p>
+				<p class="contentHidden">${dto.content}</p>
 			</div>
 			
 		</div>
@@ -278,10 +279,10 @@
             </div>
         </footer>
 
-    <script src="js/jquery.js"></script>
+    <script src="resources/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
 <!-- /.container -->
 </body>
 </html>

@@ -24,7 +24,7 @@ self.close()
 } 
 function submitUpdate(){
 	 var f = document.getElementById("reviewDeleteForm");  // 전송할 폼 ID(현재 자식창내)
-	   f.action = "../ReviewBoardDeleteController";    // 실행할 액션
+	   f.action = "../ReviewBoardDelete";    // 실행할 액션
 	   opener.window.name = "SC-AD4200-06";   // 부모창 이름 설정(임의 설정 가능)
 	   f.target = opener.window.name;     // 액션 실행 방향 (부모창)
 	   f.submit();
@@ -33,7 +33,7 @@ function submitUpdate(){
 </script>
 </head>
 <body>
-<form id="reviewDeleteForm" name="reviewUpdateForm" action="ReviewBoardDeleteController">
+<form id="reviewDeleteForm" name="reviewUpdateForm" >
 <input type="hidden" name="num" value="<%=num%>">
 <center><b><%=num%>번 글을 삭제하시겠습니까? <br>삭제하신글은<font color="red">복구</font>가 불가능합니다</b></center>
 <center>

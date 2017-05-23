@@ -8,19 +8,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="js/jquery.js"></script>
+<script src="resources/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
 <!-- Bootstrap Core CSS -->
-   <link href="css/mainSerch.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link href="resources/css/mainSerch.css" rel="stylesheet">
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="resources/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <jsp:include page="maininclude/Serch.jsp" flush="true"/>
@@ -109,10 +109,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="resources/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
 
 
  

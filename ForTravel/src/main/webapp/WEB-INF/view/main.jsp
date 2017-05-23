@@ -12,9 +12,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="./jqueryMobile/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
-<script src="./jquery/jquery-1.11.0.js"></script>
-<script src="./jqueryMobile/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
+	href="resources/jqueryMobile/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
+<script src="resources/jquery/jquery-1.11.0.js"></script>
+<script src="resources/jqueryMobile/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/css/mainSerch.css" rel="stylesheet">
@@ -23,7 +23,10 @@
 <!-- Custom CSS -->
 <link href="resources/css/modern-business.css" rel="stylesheet">
 
+    <script src="resources/js/jquery.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="resources/js/bootstrap.min.js"></script>
 <!-- Custom Fonts -->
 <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
@@ -68,8 +71,7 @@ break;
 			<c:forEach var="image" items="${image_array}" varStatus="image_status">
 				<div class="item">
 					<a href="#">
-						<div class="fill"
-							style="background-image:url('/4Travel/images/${image}');"></div>
+						<div class="fill" style="background-image:url('file/${image}');"></div>
 					<c:if test="${bannerdto.imageCaption != null}">
 						<c:set var="caption_array"
 							value="${fn:split(bannerdto.imageCaption,'/')}" />
@@ -85,28 +87,6 @@ break;
 		</c:if>
 
 	</div>
-
-	<!--  <div class="item active">
-            <a href = "#">
-                <div class="fill" style="background-image:url('/4Travel/images/배너1.jpg');"></div>
-                <div class="carousel-caption">
-                    
-                </div></a> 
-            </div>
-            <div class="item">
-            <a href = "#">
-                <div class="fill" style="background-image:url('/4Travel/images/배너2.jpg');"></div>
-                <div class="carousel-caption">
-                  
-                </div></a>
-            </div>
-            <div class="item">
-            <a href = "#">
-                <div class="fill" style="background-image:url('/4Travel/images/배너3.jpg');"></div>
-                <div class="carousel-caption">
-                     
-                </div></a>
-            </div> -->
 
 	<!-- Controls -->
 	<a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -178,7 +158,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
         	 <p><a href="ReviewBoardDetailController?num=${BestReview.num}">
         	 <c:if test="${BestReview.image1 !=null}">
 			<c:set var="image_array" value="${fn:split(BestReview.image1,'/')}" />
-				<img class="newpackage" src="/4Travel/images/${image_array[0]}"/>
+				<img class="newpackage" src="file/${image_array[0]}"/>
 			</c:if>
 			<c:if test="${BestReview.image1 ==null}">
         	 <img  class="newpackage" src="images/noimage.png"/>
@@ -212,7 +192,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
     				SimpleDateFormat dayform=new SimpleDateFormat("yyyy/MM"); 
     				%>
 				<a href="PackageThirdListController?packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">
-                        <p><img  class="newpackage" src="images/${i.image}.jpg"></img></a><br><br>
+                        <p><img  class="newpackage" src="resources/images/${i.image}.jpg"></img></a><br><br>
                         	패키지 명 : ${i.packagename}<br>
                         	<%-- 출발날짜 : ${i.startdate}<br> --%>
                         	<%-- 도착날짜 : ${i.lastdate}<br> --%>

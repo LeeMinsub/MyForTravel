@@ -24,7 +24,7 @@ self.close()
 } 
 function submitUpdate(){
 	 var f = document.getElementById("reviewUpdateForm");  // 전송할 폼 ID(현재 자식창내)
-	  // f.action = "../ReviewBoardUpdateUI";    // 실행할 액션
+	   f.action = "../ReviewBoardUpdateUI";    // 실행할 액션
 	   opener.window.name = "SC-AD4200-05";   // 부모창 이름 설정(임의 설정 가능)
 	   f.target = opener.window.name;     // 액션 실행 방향 (부모창)
 	   f.submit();
@@ -33,7 +33,7 @@ function submitUpdate(){
 </script>
 </head>
 <body>
-<form id="reviewUpdateForm" name="reviewUpdateForm" action="ReviewBoardUpdate">
+<form id="reviewUpdateForm" name="reviewUpdateForm" action="ReviewBoardUpdateUI">
 <input type="hidden" name="num" value="<%=num%>">
 <center><b><%=num%>번 글을 수정하시겠습니까?</b></center>
 <center>

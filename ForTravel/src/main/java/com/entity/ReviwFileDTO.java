@@ -7,7 +7,7 @@ public class ReviwFileDTO {
 	private String content;
 	private String travelLoc;
 	private String title;
-	private CommonsMultipartFile[] existingImages;
+	private String [] existingImages;
 	private CommonsMultipartFile[] theFile;
 	private String num;
 	
@@ -35,10 +35,10 @@ public class ReviwFileDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public CommonsMultipartFile[] getExistingImages() {
+	public String[] getExistingImages() {
 		return existingImages;
 	}
-	public void setExistingImages(CommonsMultipartFile[] existingImages) {
+	public void setExistingImages(String[] existingImages) {
 		this.existingImages = existingImages;
 	}
 	public CommonsMultipartFile[] getTheFile() {
@@ -53,9 +53,7 @@ public class ReviwFileDTO {
 	public void setNum(String num) {
 		this.num = num;
 	}
-	
-	
-	
 
 	
-}
+
+}//end class

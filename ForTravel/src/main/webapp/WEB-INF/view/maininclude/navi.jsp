@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<link rel="stylesheet" href="/4Travel/css/common.css"/>
+<link rel="stylesheet" href="resources/css/common.css"/>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#japans").on("mouseover",function(event) {
@@ -245,7 +246,7 @@
 	</div>
 	<!-- /.container -->
 </nav>
-<script src="js/jquery.js"></script>
+<script src="resources/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>

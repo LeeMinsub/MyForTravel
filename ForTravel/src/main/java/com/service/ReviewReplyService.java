@@ -23,8 +23,7 @@ public class ReviewReplyService {
 	}
 	public int replyInsert(ReviewReplyDTO dto){
 		int n=dao.replyInsert(dto);
-		int m=replyUpdate(dto);
-	return n+m;
+	return n;
 	}
 	
 	public List<ReviewReplyDTO> replyList(int reviewNum){

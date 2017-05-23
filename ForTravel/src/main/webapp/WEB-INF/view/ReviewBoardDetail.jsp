@@ -8,14 +8,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
- <link href="css/bootstrap.min.css" rel="stylesheet">
+ <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
- <link href="css/mainSerch.css" rel="stylesheet">
-    <link href="css/modern-business.css" rel="stylesheet">
+ <link href="resources/css/mainSerch.css" rel="stylesheet">
+    <link href="resources/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <jsp:include page="maininclude/Serch.jsp" flush="true"/>
@@ -39,7 +39,7 @@ padding:0;
 				여행 후기 <small><a href="#">For Travel</a> </small>
 			</h1>
 			<ol class="breadcrumb">
-				<li><a href="ReviewBoardController">목록가기</a></li>
+				<li><a href="ReviewBoard">목록가기</a></li>
 				<li class="active">${boardRetrieve.title}</li>
 			</ol>
 		</div>
@@ -57,9 +57,7 @@ padding:0;
 			<hr>
 
 			<!-- Date/Time -->
-			<p>
-			<p class="lead">${boardRetrieve.title}</p>	<i class="fa fa-clock-o"></i> Posted on ${boardRetrieve.writeday}
-			</p>
+			<p><p class="lead">${boardRetrieve.title}</p>	<i class="fa fa-clock-o"></i> Posted on ${boardRetrieve.writeday}</p>
 
 
 			<!-- Preview Image -->
@@ -68,7 +66,7 @@ padding:0;
 			<c:set var="image_array" value="${fn:split(boardRetrieve.image1,'/')}" />
 			<c:forEach var="image" items="${image_array}" varStatus="s">
 			<img class="img-responsive"
-				src="/4Travel/images/${image}" alt=""><br/><br/>
+				src="file/${image}" alt=""><br/><br/>
 				</c:forEach>
 			</c:if>
 
@@ -85,7 +83,7 @@ padding:0;
 			<!-- Comments Form -->
 			<div class="well">
 				<h4>Leave a Comment:</h4>
-				<form action="ReviewReplyWriteController"role="form" method="post">
+				<form action="ReviewReplyWrite" role="form" method="post">
 					<div class="form-group">
 						<textarea name="rpContent"class="form-control" rows="3"></textarea>
 					</div>
@@ -137,9 +135,9 @@ $(document).ready(function(){
 			var queryString = $(this).closest(".rprpform").serialize();
 			console.log(queryString);
 		
-			$.ajax({
+		$.ajax({
 				type:"get",
-				url:"board/reviewReplyUpdate.jsp",
+				url:"ReviewReplyInsert",
 				dataType:"html",
 				data:queryString,
 				success:function(responseData,status,xhr){
@@ -196,9 +194,9 @@ $(document).ready(function(){
 		<hr>
 </div>
 <jsp:include page="maininclude/forcopy.jsp" flush="true" />
-<script src="js/jquery.js"></script>
+<script src="resources/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
 </body>
 </html>
