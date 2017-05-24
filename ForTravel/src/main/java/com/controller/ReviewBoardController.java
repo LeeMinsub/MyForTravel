@@ -3,6 +3,9 @@ package com.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -139,7 +142,7 @@ public class ReviewBoardController {
 	}
 
 	@RequestMapping("/ReviewBoardUpdate")
-	public ModelAndView ReviewBoardUpdate(ReviwFileDTO dto){
+	public ModelAndView ReviewBoardUpdate(ReviwFileDTO dto,HttpSession session){
 		String [] existingImages=dto.getExistingImages();
 		CommonsMultipartFile [] theFile=dto.getTheFile();
 		String travelNation=dto.getTravelNation();
@@ -148,11 +151,19 @@ public class ReviewBoardController {
 		String title=dto.getTitle();
 		String num=dto.getNum();
 		
+		MemberDTO mdto=(MemberDTO)session.getAttribute("login");
+		String userid=mdto.getUserid();
+		
+		
+		Calendar cal=Calendar.getInstance();
+		Date today=cal.getTime();
+		String today1=(new SimpleDateFormat("yyMMddHHmmss").format(today));
+		
 		String fileName="";
 		String image1="";
 		if(existingImages.length!=0||existingImages!=null){
 			for (int i = 0; i < existingImages.length; i++) {
-				image1 = existingImages[i]+"/";
+				image1 += existingImages[i]+"/";
 				}
 			}
 		//특정 폴더에 저장
@@ -160,9 +171,11 @@ public class ReviewBoardController {
 			if(theFile.length!=0||theFile!=null){
 			for (int i = 0; i < theFile.length; i++) {
 				fileName=theFile[i].getOriginalFilename();
-				File f=new File("C:\\temp\\upload",fileName);
+				if(!fileName.trim().isEmpty()){
+				File f=new File("C:\\temp\\upload",today1+"_"+userid+"_"+fileName);
 				theFile[i].transferTo(f);
-				image1 = fileName+"/";
+				image1 += today1+"_"+userid+"_"+fileName+"/";
+					}//end if
 				}
 			}
 		} catch (IllegalStateException e) {
@@ -232,6 +245,11 @@ public class ReviewBoardController {
 		MemberDTO mdto=(MemberDTO)session.getAttribute("login");
 		String userid=mdto.getUserid();
 		
+		//시간으로 uid 생성
+		Calendar cal=Calendar.getInstance();
+		Date today=cal.getTime();
+		String today1=(new SimpleDateFormat("yyMMddHHmmss").format(today));
+		
 		String fileName="";
 		String image1="";
 		//특정 폴더에 저장
@@ -239,9 +257,11 @@ public class ReviewBoardController {
 			if(theFile.length!=0||theFile!=null){
 			for (int i = 0; i < theFile.length; i++) {
 				fileName=theFile[i].getOriginalFilename();
-				File f=new File("C:\\temp\\upload",fileName);
+				if(!fileName.trim().isEmpty()){
+				File f=new File("C:\\temp\\upload",today1+"_"+userid+"_"+fileName);
 				theFile[i].transferTo(f);
-				image1 = fileName+"/";
+				image1 += today1+"_"+userid+"_"+fileName+"/";
+					}//end if
 				}
 			}
 		} catch (IllegalStateException e) {
@@ -296,12 +316,7 @@ public class ReviewBoardController {
 	@ResponseBody
 	public String ReviewReplyInsert(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws CommonException {
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
 		String content=request.getParameter("rprpContent");
 	    String repRoot=request.getParameter("repRoot");
 	    String repStep=request.getParameter("repStep");
@@ -323,7 +338,6 @@ public class ReviewBoardController {
 	    int result = 0;
 	    try{
 	 	 result = ReviewReplyService.replyInsert(rpDTO);
-	     
 	     rpList=ReviewReplyService.replyList(Integer.parseInt(reviewNum));
 	   }catch(Exception e){
 	 	  e.printStackTrace();
@@ -341,15 +355,19 @@ public class ReviewBoardController {
 	    	responseData +=rpList.get(i).getContent()+"</pre><span class='replebutton label label-success' style='cursor: pointer;'>답글 달기</span><br/><br/><div class='reple well' style='display: none;'><h4>Leave a Comment:</h4>";
 	    	responseData +="<form class='rprpform' name='rprpform' role='form' method='post'>";
 	    	responseData +="<div class='form-group'><textarea name='rprpContent'class='form-control' rows='3'></textarea></div>";
-	    	responseData +="<input type='hidden' name='userid' value='${sessionScope.login.userid}'>";
-	    	responseData +="<input type='hidden' name='num' value="+rpList.get(i).getNum();
-	    	responseData +="<input type='hidden' name='repRoot' value="+rpList.get(i).getRepRoot();
-	    	responseData +="<input type='hidden' name='repStep' value="+rpList.get(i).getRepStep();
-	    	responseData +="<input type='hidden' name='repIndent' value="+rpList.get(i).getRepIndent();
-	    	responseData +="<input type='hidden' name='reviewNum' value="+rpList.get(i).getReviewNum();
-	    	responseData +="<button type='button' class='rprpformButton btn btn-primary'>Submit</button></form></div></div></div>";
+	    	responseData +="<input type='hidden' name='userid' value="+mdto.getUserid()+">";
+	    	responseData +="<input type='hidden' name='num' value="+rpList.get(i).getNum()+">";
+	    	responseData +="<input type='hidden' name='repRoot' value="+rpList.get(i).getRepRoot()+">";
+	    	responseData +="<input type='hidden' name='repStep' value="+rpList.get(i).getRepStep()+">";
+	    	responseData +="<input type='hidden' name='repIndent' value="+rpList.get(i).getRepIndent()+">";
+	    	responseData +="<input type='hidden' name='reviewNum' value="+rpList.get(i).getReviewNum()+">";
+	    	responseData +="<button type='submit' class='rprpformButton btn btn-primary'>Submit</button></form></div></div></div>";
 	    	}//end for i
 	    }//end if
 	   return responseData;
 	}
+	
+	
+	
+	
 }// end class

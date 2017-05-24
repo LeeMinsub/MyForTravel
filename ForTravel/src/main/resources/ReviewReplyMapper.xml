@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="replyList" parameterType="int" resultType="ReviewReplyDTO">
 select num,userid, content
      ,writeday
-  ,repRoot,repStep,repIndent
+  ,repRoot,repStep,repIndent,reviewNum
      from reviewreply
      where reviewNum = #{reviewNum}
      order by repRoot desc ,repStep asc

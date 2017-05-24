@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <style>
+<!DOCTYPE html5>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title> 
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+   <link href="resources/css/mainSerch.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="resources/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+        <script src="resources/js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+    <script src="resources/js/bootstrap.min.js"></script> 
+</head>
+<body>
+<jsp:include page="maininclude/Serch.jsp" flush="true"/>
+<jsp:include page="maininclude/navi.jsp" flush="true"/>
+  <style>
   
       #map {
         height: 30%;
@@ -98,24 +118,24 @@
             <!-- Sidebar Column -->
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="index.html" class="list-group-item">Home</a>
+                    <a href="Home" class="list-group-item">Home</a>
                     <a href="#" class="list-group-item" id = "package">패키지</a>
                     <ul class="siteMapList"> 
-                    <a href ="PackageFirstALLController?loc=동남아"><li class="list-group-item">동남아/대만</li></a>
-                    <a href ="PackageFirstALLController?loc=중국"><li class="list-group-item">중국/홍콩</li></a>
-                    <a href ="PackageFirstALLController?loc=일본"><li class="list-group-item">일본</li></a>
-                    <a href ="PackageFirstALLController?loc=유럽"><li class="list-group-item">유럽</li></a>
-                    <a href ="PackageFirstALLController?loc=괌"><li class="list-group-item">괌/사이판</li></a>
-                    <a href ="PackageFirstALLController?loc=남태평양"><li class="list-group-item">남태평양</li></a>
-                    <a href ="PackageFirstALLController?loc=미국"><li class="list-group-item">미국/캐나다</li></a>
-                    <a href ="PackageFirstALLController?loc=서남아"><li class="list-group-item">서남아/중앙아시아</li></a>
-                    <a href ="PackageFirstALLController?loc=중동"><li class="list-group-item">중동/아프리카</li></a>
-                    <a href ="PackageFirstALLController?loc=중남미"><li class="list-group-item">중남미</li></a>
+                    <a href ="PackageFirstALL?loc=동남아"><li class="list-group-item">동남아/대만</li></a>
+                    <a href ="PackageFirstALL?loc=중국"><li class="list-group-item">중국/홍콩</li></a>
+                    <a href ="PackageFirstALL?loc=일본"><li class="list-group-item">일본</li></a>
+                    <a href ="PackageFirstALL?loc=유럽"><li class="list-group-item">유럽</li></a>
+                    <a href ="PackageFirstALL?loc=괌"><li class="list-group-item">괌/사이판</li></a>
+                    <a href ="PackageFirstALL?loc=남태평양"><li class="list-group-item">남태평양</li></a>
+                    <a href ="PackageFirstALL?loc=미국"><li class="list-group-item">미국/캐나다</li></a>
+                    <a href ="PackageFirstALL?loc=서남아"><li class="list-group-item">서남아/중앙아시아</li></a>
+                    <a href ="PackageFirstALL?loc=중동"><li class="list-group-item">중동/아프리카</li></a>
+                    <a href ="PackageFirstALL?loc=중남미"><li class="list-group-item">중남미</li></a>
                     </ul>
-                    <a href="ReviewBoardController" class="list-group-item">여행후기</a>
-                    <a href="contact.html" class="list-group-item">공지사항</a>
-                    <a href="QABoardListController" class="list-group-item">FAQ</a>
-                    <a href="SignUPController" class="list-group-item">회원가입</a>
+                    <a href="ReviewBoard" class="list-group-item">여행후기</a>
+                    <a href="NoticeUI" class="list-group-item">공지사항</a>
+                    <a href="QABoardList" class="list-group-item">FAQ</a>
+                    <a href="SignUP" class="list-group-item">회원가입</a>
                 </div>
             </div>
             <!-- Content Column -->
@@ -150,18 +170,16 @@
 
         <hr>
 
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    
-                </div>
-            </div>
-        </footer>
-
     </div>
+        <!-- Footer -->
+      <jsp:include page="maininclude/forcopy.jsp" flush="true"/> 
+
     <!-- /.container -->
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9pjYyBZSV-jNs6d8o58mEXsgqe4ecpCA&libraries=places&callback=initMap"></script>
 
 
+
+
+</body>
+</html>

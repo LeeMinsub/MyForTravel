@@ -25,4 +25,7 @@ public class MemberService {
 	public void memberJoin(MemberDTO mDTO)throws CommonException{
 		dao.memberJoin(mDTO);
 	}	
+	public int idCheck(String userid)throws CommonException{
+		return dao.idCheck(userid);
+	}	
 }

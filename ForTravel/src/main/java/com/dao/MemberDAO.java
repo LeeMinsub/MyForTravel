@@ -25,4 +25,8 @@ public class MemberDAO {
 	public void memberJoin(MemberDTO mDTO)throws CommonException{
 		int n=template.insert(namespace+"memberJoin",mDTO);
 	}	
+	public int idCheck(String userid)throws CommonException{
+		int n=template.selectOne(namespace+"idCheck",userid);
+		return n;
+	}	
 }

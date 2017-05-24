@@ -42,6 +42,7 @@
         <value>com.entity.MemberDTO</value>
         <value>com.entity.ReviewBoardPageDTO</value>
         <value>com.entity.QABoardDTO</value>
+        <value>com.entity.TravelNoticeDTO</value>
        </list>
       </property>
     </bean>

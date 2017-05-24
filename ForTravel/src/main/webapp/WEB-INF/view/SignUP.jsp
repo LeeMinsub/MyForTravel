@@ -1,7 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  
-  <style type="text/css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title> 
+<script src="resources/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="resources/js/bootstrap.min.js"></script>
+   <link href="resources/css/mainSerch.css" rel="stylesheet">
+ <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="resources/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+   <!--  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+
+	<style type="text/css">
   .inputSize{
   width: 16%;
   height: 25px;
@@ -102,28 +119,33 @@ $(document).ready(function(){
 			//ajax 통신
 			$.ajax({
 				type:"get",
-				url:"maininclude/idCheck.jsp",
+				url:"IdCheck",
 				datatype:"text",
 				data:{
 					userid:$("#userid").val()
 				},
 				success:function(responseData,status,xhr){
-					$("#result").text(responseData);
-					if($.trim(responseData)=="아이디 사용 가능"){
+					var stringResult;
+					console.log(responseData,"전");
+					if(responseData==0){
 						$("#result").css("color","blue");
 						$("#result").css("position","relative");
 						$("#result").css("left","35%");
 						$("#result").css("bottom","11px"); 
-						
+						stringResult="아이디 사용 가능";
 					}else{
 						$("#result").css("color","red");
 						$("#result").css("position","relative");
 						$("#result").css("left","35%");
 						$("#result").css("bottom","11px"); 
+						stringResult="아이디 중복 사용불가";
 					}
+					console.log(responseData,"후");
+					
+					$("#result").text(stringResult);
 				},
-				error:function(error){
-					console.log(error);
+				error:function(request,status,error){
+					console.log	("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
 			}); //end ajax
 		});//end userid event
@@ -227,8 +249,14 @@ $(document).ready(function(){
 </script>
 <!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="js/daum.js"></script>
+<script src="resources/js/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 --> 
+
+</head>
+<body>
+<jsp:include page="maininclude/Serch.jsp" flush="true"/>
+<jsp:include page="maininclude/navi.jsp" flush="true"/>
+
         <!-- Page Heading/Breadcrumbs -->
         <div class="container">
         <div class="row">
@@ -255,7 +283,7 @@ $(document).ready(function(){
 </span>
 <br>
 	
-	<form name="sinupForm" action="MemberJoinController">
+	<form name="sinupForm" action="MemberJoin">
 	<div id = "name">
 	이름 (한글, 예 홍길동) <br>
 	<input class="inputSize" type="text" name="username" id="username"></div>
@@ -340,23 +368,16 @@ $(document).ready(function(){
         <!-- /.row -->
 
         <hr>
+    </div>
 
         <!-- Footer -->
-          <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <font color="gray"><p>ForTravel 대표이사: team M&M 서울 강남구 역삼동  에이콘아카데미(주)에이콘이즈</p>
-						<p>대표전화: 02-000-0000 팩스:02-000-0000</p>
-                   		 <p>Copyright &copy; team M&amp;M(Jung MinWoo,Lee Min Sub) All Rights Reserved.</p></font>
-                </div>
-            </div>
-        </footer>
-
-    </div>
+      <jsp:include page="maininclude/forcopy.jsp" flush="true" />
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="resources/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+</body>
+</html>

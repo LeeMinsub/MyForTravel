@@ -58,9 +58,7 @@ var imageIndex='';
        				 return false;
     				}else{
     					 readURL(this);
-    		                
     		                $(this).after("<input type='file' name='theFile' class='imgInp' ><br />");
-    		                
     		                $(this).css("display","none");
     				}
  
@@ -85,7 +83,6 @@ var imageIndex='';
 			<ol class="breadcrumb">
 				<li><a href="ReviewBoard">목록가기</a></li>
 				<li class="active">여행 후기
-				
 			</ol>
 		</div>
 	</div>

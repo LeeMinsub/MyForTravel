@@ -32,7 +32,7 @@
 		$(".title").css("text-align","center");
 		
 		$("#signup").css("position","absolute");
-		$("#signup").css("top","66%"); 
+		$("#signup").css("top","83%"); 
 		$("#signup").css("left","620px");
 		
 		$("#login").css("position","absolute");
@@ -93,19 +93,10 @@
         <!-- /.row -->
 
         <hr>
-
+  </div>
         <!-- Footer -->
-         <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <font color="gray"><p>ForTravel 대표이사: team M&M 서울 강남구 역삼동  에이콘아카데미(주)에이콘이즈</p>
-						<p>대표전화: 02-000-0000 팩스:02-000-0000</p>
-                   		 <p>Copyright &copy; team M&amp;M(Jung MinWoo,Lee Min Sub) All Rights Reserved.</p></font>
-                </div>
-            </div>
-        </footer>
-
-    </div>
+         <jsp:include page="maininclude/forcopy.jsp" flush="true" />
+  
     <!-- /.container -->
 
     <!-- jQuery -->

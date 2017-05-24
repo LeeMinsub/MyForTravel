@@ -14,21 +14,69 @@
  <link href="resources/css/mainSerch.css" rel="stylesheet">
     <link href="resources/css/modern-business.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom Fonts// 다운로드 에러 -->
+    <!-- <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+<style>
+#reple{
+width: 700px;
+height: 200px;
+margin: auto;
+}
+
+.arrowdiv{
+width:15px;
+height:15px;
+background-image: url('resources/images/arrow.png');
+background-size: 15px;
+padding:0;
+}
+.showtoggle{
+display:block;
+}
+</style>
+<script src="resources/js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+		
+	$("body").on("click",".replebutton",function(event){
+		if(${login==null}){
+				alert('로그인 후 시도 해주세요');
+			}else if($(this).next().next().next(".reple").attr("style")=='display: block;'){
+			$(this).next().next().next(".reple").css("display","none");
+		}else{
+			$(this).next().next().next(".reple").css("display","block");
+		}
+			console.log($(this).next().next().next(".reple").attr("style"));
+			console.log($.trim($(this).next().next().next(".reple").attr("style"))=='display: block;');
+		});//end rdeplebutton event
+		
+		$("body").on("click",".rprpformButton",function(event){
+			console.log($(this).closest(".rprpform"));
+			var queryString = $(this).closest(".rprpform").serialize();
+			console.log(queryString);
+		
+		$.ajax({
+				type:"get",
+				url:"ReviewReplyInsert",
+				dataType:"html",
+				data:queryString,
+				success:function(responseData,status,xhr){
+					console.log(responseData);
+					$("#replyDiv").html(responseData);
+				},
+				error:function(error){
+					console.log(error);
+				}
+			}); //end ajax 
+		});	//end .rprpformButton
+});	//end document).ready
+</script>
+
 </head>
 <body>
 <jsp:include page="maininclude/Serch.jsp" flush="true"/>
 <jsp:include  page="maininclude/navi.jsp" flush="true"/>
-<style>
-.arrowdiv{
-width:10px;
-height:10px;
-background-image: url('images/arrow.png');
-background-size: 10px;
-padding:0;
-}
-</style>
+
 
 <div class="container">
 
@@ -98,59 +146,8 @@ padding:0;
 
 	
 </div>
-<style>
-#reple{
-width: 700px;
-height: 200px;
-margin: auto;
-}
-.arrowdiv{
-width:15px;
-height:15px;
-background-image: url('images/arrow.png');
-background-size: 15px;
-padding:0;
-}
-.showtoggle{
-display:block;
-}
-</style>
-<script type="text/javascript">
-$(document).ready(function(){
-		
-	$("body").on("click",".replebutton",function(event){
-		if(${login==null}){
-				alert('로그인 후 시도 해주세요');
-			}else if($(this).next().next().next(".reple").attr("style")=='display: block;'){
-			$(this).next().next().next(".reple").css("display","none");
-		}else{
-			$(this).next().next().next(".reple").css("display","block");
-		}
-			console.log($(this).next().next().next(".reple").attr("style"));
-			console.log($.trim($(this).next().next().next(".reple").attr("style"))=='display: block;');
-		});//end rdeplebutton event
-		
-		$("body").on("click",".rprpformButton",function(event){
-			console.log($(this).closest(".rprpform"));
-			var queryString = $(this).closest(".rprpform").serialize();
-			console.log(queryString);
-		
-		$.ajax({
-				type:"get",
-				url:"ReviewReplyInsert",
-				dataType:"html",
-				data:queryString,
-				success:function(responseData,status,xhr){
-					console.log(responseData);
-					$("#replyDiv").html(responseData);
-				},
-				error:function(error){
-					console.log(error);
-				}
-			}); //end ajax 
-		});	
-});	
-		</script>
+
+
 <div id="replyDiv" class="container">
 <!-- Comment -->
 	<c:forEach var="list" items="${rpList}">
@@ -194,7 +191,7 @@ $(document).ready(function(){
 		<hr>
 </div>
 <jsp:include page="maininclude/forcopy.jsp" flush="true" />
-<script src="resources/js/jquery.js"></script>
+
 
 <!-- Bootstrap Core JavaScript -->
 <script src="resources/js/bootstrap.min.js"></script>
