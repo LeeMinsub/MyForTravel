@@ -16,6 +16,9 @@
 					</list>
 				</property>
 			</bean>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes" value="application/json" />
+            </bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 	<mvc:default-servlet-handler />
@@ -27,6 +30,7 @@
 	<bean id="login" class="com.controller.MemberController" />
 	<bean id="notice" class="com.controller.NoticeController" />
 	<bean id="packageFirst" class="com.controller.PackageFirstController" />
+	<bean id="packageThird" class="com.controller.PackageThirdController" />
 	<!-- jsp 전담 뷰리저버 -->
 	<bean id=""
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

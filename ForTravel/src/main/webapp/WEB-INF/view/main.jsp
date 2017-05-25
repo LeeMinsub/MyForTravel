@@ -155,7 +155,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
                         <h4><i class="fa fa-fw fa-compass"></i>베스트 여행후기</h4>
                     </div> -->
         	 <div class="panel-body">
-        	 <p><a href="ReviewBoardDetailController?num=${BestReview.num}">
+        	 <p><a href="ReviewBoardDetail?num=${BestReview.num}">
         	 <c:if test="${BestReview.image1 !=null}">
 			<c:set var="image_array" value="${fn:split(BestReview.image1,'/')}" />
 				<img class="newpackage" src="file/${image_array[0]}"/>
@@ -191,7 +191,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
     				<%Date today = new Date();
     				SimpleDateFormat dayform=new SimpleDateFormat("yyyy/MM"); 
     				%>
-				<a href="PackageThirdListController?packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">
+				<a href="PackageThirdList?packageno=${i.packageno}&startdate=<%=dayform.format(today)%>&term=${i.term}">
                         <p><img  class="newpackage" src="resources/images/${i.image}.jpg"></img></a><br><br>
                         	패키지 명 : ${i.packagename}<br>
                         	<%-- 출발날짜 : ${i.startdate}<br> --%>

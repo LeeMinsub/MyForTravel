@@ -55,17 +55,6 @@
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navitop"> 
 	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<!-- <div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand"  href="Home"><font color="white">4Travel</font></a>
-		</div> -->
-		<!-- Collect the nav links, forms, and other content for toggling -->
 		
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
@@ -79,7 +68,7 @@
 						  <div id="twodiv" style="display: none;">
 							<table id="subul">
 							<tr id="firstTr">
-							<td calspan="1"><b>간토(관동)</b><br>
+							<td colspan="1"><b>간토(관동)</b><br>
 							<ul class="subul">
 									<li><a class="twoli" href="PackageFirst?city=도쿄">도쿄</a></li>
 									<li><a class="twoli" href="PackageFirst?city=요코하마">요코하마</a></li>
@@ -91,8 +80,6 @@
 									<li><a class="twoli" href="PackageFirst?city=야마나시">야마나시</a></li>
 									<li><a class="twoli" href="PackageFirst?city=시즈오카">시즈오카</a></li>
 									<li><a class="twoli" href="PackageFirst?city=후지산">후지산</a></li>
-									<br>
-									
 							</ul>
 							</td>
 							<td><b>간사이(관서)</b>
@@ -148,7 +135,6 @@
 							</td>
 							</tr>
 							<tr>
-							<br>
 							<td><b>호쿠리쿠</b><br>
 							<ul class="subul">
 									<li><a class="twoli" href="PackageFirst?city=니가타">니가타</a></li>
