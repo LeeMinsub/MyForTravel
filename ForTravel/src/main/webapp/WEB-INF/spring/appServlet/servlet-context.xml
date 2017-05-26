@@ -31,6 +31,7 @@
 	<bean id="notice" class="com.controller.NoticeController" />
 	<bean id="packageFirst" class="com.controller.PackageFirstController" />
 	<bean id="packageThird" class="com.controller.PackageThirdController" />
+	<bean id="admin" class="com.controller.AdminController" />
 	<!-- jsp 전담 뷰리저버 -->
 	<bean id=""
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

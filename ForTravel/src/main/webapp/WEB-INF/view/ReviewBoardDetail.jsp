@@ -16,6 +16,11 @@
 
     <!-- Custom Fonts// 다운로드 에러 -->
     <!-- <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+        <script src="resources/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="resources/js/bootstrap.min.js"></script>
+    
 <style>
 #reple{
 width: 700px;
@@ -193,7 +198,9 @@ $(document).ready(function(){
 <jsp:include page="maininclude/forcopy.jsp" flush="true" />
 
 
-<!-- Bootstrap Core JavaScript -->
-<script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="resources/js/bootstrap.min.js"></script>
 </body>
 </html>

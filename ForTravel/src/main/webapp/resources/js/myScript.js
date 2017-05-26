@@ -1,3 +1,4 @@
+/*Create by goodanalyst@naver.com*/
 function myAjax(url1,async1,dataType1,data1,success1){
 $.ajax({
   			type : "get",
@@ -13,3 +14,4 @@ $.ajax({
   			}
   		}); //end ajax
 }
+

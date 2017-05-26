@@ -179,7 +179,10 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9pjYyBZSV-jNs6d8o58mEXsgqe4ecpCA&libraries=places&callback=initMap"></script>
 
 
+    <script src="resources/js/jquery.js"></script>
 
+	<!-- Bootstrap Core JavaScript -->
+    <script src="resources/js/bootstrap.min.js"></script> 
 
 </body>
 </html>

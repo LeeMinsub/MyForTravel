@@ -212,7 +212,7 @@ width=600 scrolling=no height=184 topmargin="0" name=irate marginWidth=0 marginH
                     <p><font color="orange">고객지원 센터</font></p>
                 </div>
                 <div class="col-md-4" id="002">
-                    <a class="btn btn-lg btn-default btn-block " id="002box" href="FAQBoard.jsp">02-000-0000</a>
+                    <a class="btn btn-lg btn-default btn-block " id="002box" href="QABoardList">02-000-0000</a>
                 </div>
             </div>
         </div>

@@ -13,15 +13,12 @@
 
     <!-- Custom Fonts -->
     <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <script src="resources/js/jquery.js"></script>
+   <!-- jQuery -->
+    
+        <script src="resources/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="resources/js/bootstrap.min.js"></script>
-    
-</head>
-<body>
-   <jsp:include page="maininclude/Serch.jsp" flush="true"/>
-<jsp:include  page="maininclude/navi.jsp" flush="true"/>
   <style type="text/css">
     .noticetable{
     	width: 10%;
@@ -639,7 +636,12 @@ var nation = '{"nations":['+
 	}); /* endDoucumentReady */
 	
 	
-</script>    
+</script>       
+</head>
+<body>
+   <jsp:include page="maininclude/Serch.jsp" flush="true"/>
+<jsp:include  page="maininclude/navi.jsp" flush="true"/>
+ 
     
 <div class="container">
         <!-- Page Heading/Breadcrumbs -->
@@ -835,5 +837,10 @@ var nation = '{"nations":['+
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9pjYyBZSV-jNs6d8o58mEXsgqe4ecpCA&callback=initMap">
     </script>
     <!-- jQuery -->
+    
+        <script src="resources/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="resources/js/bootstrap.min.js"></script>
 </body>
 </html>
