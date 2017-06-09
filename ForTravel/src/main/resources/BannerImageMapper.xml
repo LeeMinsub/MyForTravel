@@ -17,7 +17,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="BannerUpdate" parameterType="BannerImageDTO">
 		update BannerImage
-		set imageName=#{imageName},imageCaption=#{imageCaption}
+		set imageName=#{imageName}
+		<if test="imageCaption!=null">
+		,imageCaption=#{imageCaption}
+		</if>
+		<if test="imageCaption==null">
+		,imageCaption='///'
+		</if>
 		where num = #{num}
 	</update>
 	

@@ -1,7 +1,12 @@
 package com.controller;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -13,7 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.entity.BannerFileDTO;
 import com.entity.BannerImageDTO;
 import com.entity.MemberDTO;
 import com.exception.CommonException;
@@ -82,5 +90,56 @@ public class AdminController {
 	request.setAttribute("captionList", captionList);
 		return "bannerUpdate";
 	}//end adminMain
+
+@RequestMapping("/AdminBannerUpdate")
+	public String AdminBannerUpdate(BannerFileDTO dto,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws CommonException{
+	String [] caption;
+	caption=dto.getContent();
+	String [] existingImages;
+	existingImages=dto.getExistingImages();
+	CommonsMultipartFile [] theFile=dto.getTheFile();
+	String imageCaption="";
+	String imageName="";
+	if(caption.length!=0||caption!=null){
+		for (int i = 0; i < caption.length; i++) {
+			imageCaption +=caption[i]+"/";
+		}
+	}
+	if(existingImages!=null){
+		for (int i = 0; i < existingImages.length; i++) {
+			imageName +=existingImages[i]+"/";
+		}
+	}
+	//특정 폴더에 저장
+	try {
+		if(theFile.length!=0||theFile!=null){
+		for (int i = 0; i < theFile.length; i++) {
+			String fileName="";
+			fileName=theFile[i].getOriginalFilename();
+			if(!fileName.trim().isEmpty()){
+			File f=new File("C:\\temp\\upload",fileName);
+			theFile[i].transferTo(f);
+			imageName += fileName+"/";
+				}//end if
+			}
+		}
+	} catch (IllegalStateException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	BannerImageDTO bdto=new BannerImageDTO(1,imageName,imageCaption);
+	try {
+		BannerImageService.BannerUpdate(bdto);
+	} catch (CommonException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+	return "redirect:Home";
+}//end adminMain
 	
 }//end class

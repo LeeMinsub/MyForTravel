@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<form  id="BannerUpdateform" name="form1" method="post" enctype="multipart/form-data" action="AdminBannerUpdateController">
+<form  id="BannerUpdateform" name="form1" method="post" enctype="multipart/form-data" action="AdminBannerUpdate">
 
 		<!-- Preview Image -->
 			<c:forEach var="image" items="${imageList}" varStatus="image_status">
