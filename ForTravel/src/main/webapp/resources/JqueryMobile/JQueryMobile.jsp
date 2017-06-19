@@ -12,11 +12,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>jquery mobile</title>
 
-<link rel="stylesheet" href="rjqueryMobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="./jqueryMobile/jquery.mobile-1.4.5.css">
 <script src="./jquery/jquery.js"></script>
 <script src="./jqueryMobile/jquery.mobile-1.4.5.js"></script>
-<link rel="stylesheet" href="css/swiper.min.css">
-<link rel="stylesheet" href="css/jqueryMobile.css">
+<link rel="stylesheet" href="./css/swiper.min.css">
+<link rel="stylesheet" href="./css/jqueryMobile.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -114,7 +114,7 @@
 <script>
 		$(document).ready(function() {
 			$.ajax({
-				url : 'JQueryMobile.jsp',
+				url : './JQueryMobile.jsp',
 				Type : 'get',
 				success : function(t) {
 					$(t).find("person").each(function(i) {
@@ -163,7 +163,20 @@
 				}
 			});
 		});
-	
+		$("main_button_logout").on("click",function(){
+			
+		});
+		<%
+		String id = request.getParameter("id");
+		if(id !=null){
+		session.setAttribute("id", id);
+		}else{
+			session.setAttribute("null", id);
+		}
+		String userid = (String)session.getAttribute("id");
+		System.out.println(userid);
+		
+		%>
 </script>
 </head>
 <body>
@@ -171,7 +184,7 @@
 		try {
 			String driver = "oracle.jdbc.driver.OracleDriver";
 			Class.forName(driver);
-			String url = "jdbc:oracle:thin:@192.168.1.14:1521:orcl";
+			String url = "jdbc:oracle:thin:@192.168.137.160:1521:orcl";
 			String userName = "fortravel";
 			String passWord = "fortravel";
 			Connection con = DriverManager.getConnection(url, userName, passWord);
@@ -217,15 +230,22 @@
 			System.out.println(e);
 		}
 	
+	
 	%>
 
 
 	<div id="home" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a class="main_button" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button" 
-				href="#login" data-rel="dialog" style="background-color: #ffffff;">로그인</a>
+			<a class="main_button_home" href="#home" data-icon="home"
+				style="background-color: #ffffff;">Home</a> 
+				<%if(userid == null){ %>)
+				<a class="main_button_login" href="login.jsp" data-rel="dialog" data-ajax="false" style="background-color: #ffffff;">로그인</a>
+				<%}else{ %>
+				<a class="main_button_logout" href="#logout" data-rel="dialog" style="background-color: #ffffff;">로그아웃</a>
+				
+				<%}%>
+				
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
 				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" data-transition="slide" href="reviewBoard.jsp" data-ajax="false">여행
@@ -317,8 +337,7 @@
 	<div id="package" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a class="main_button" href="#home" data-icon="home"
-				style="background-color: #ffffff;">Home</a> <a class="main_button"
+			<a class="main_button_home" href="#home" style="background-color: #ffffff;">Home</a> <a class="main_button_login"
 				href="#login" data-transition="slide" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
@@ -360,34 +379,7 @@
 		</div>
 
 	</div> <!-- package page 영역 종료 -->
-	
-	<!-- review page 여역 -->
 
-	
-	
-	<!-- login page 영역 -->
-
-	<div id="login" data-role="page">
-		<div data-role="header" style="background-color: #E6E9ED;">
-			<h1>4Trevel</h1>
-			
-			<hr>
-			<span class="header_naviBar">
-			</span>
-		</div>
-		<div data-role="content" style="background-color: #ffffff;">
-		 <input type ="text" name="userid" value ="아이디">
-		 <input type ="password" name="passwd" value="비밀번호"> 
-		
-			<a class="ui-btn" href="#home" data-role="button"
-				style="background-color: #E6E9ED;">로그인</a>
-		</div>
-		<div data-role="footer">
-			<a class="ui-btn" href="#sign-up" data-role="button" data-transition="slide"
-				style="background-color: #E6E9ED;">회원가입</a> 
-		</div>
-	</div> <!-- login page 영역 종료 -->
-	
 	<!-- sign-up page 영역 -->
 
 	<div id="sign-up" data-role="page">
@@ -415,5 +407,4 @@
 
 </body>
 </html>
-
 

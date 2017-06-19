@@ -57,13 +57,16 @@ $.ajax({
 </script>
 </head>
 <body>
-<%String strXML2 = "";
+<%
+String userid = (String)session.getAttribute("id");
+System.out.println(userid);
+String strXML2 = "";
 try {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	Class.forName(driver);
-	String url = "jdbc:oracle:thin:@192.168.1.14:1521:orcl";
-	String userName = "fortravel";
-	String passWord = "fortravel";
+	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String userName = "Fortravel";
+	String passWord = "Fortravel";
 	Connection con = DriverManager.getConnection(url, userName, passWord);
 	Statement st2 = con.createStatement();
 	String sql2 = "select * from reviewboard";
@@ -120,9 +123,9 @@ out.write(strXML2);
 <div id="review" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a id="#main_button_home" data-icon="home" href="JQueryMobile.jsp" data-ajax="false" 
-				style="background-color: #ffffff;">Home</a> <a id="main_button_login"
-				href="JQueryMobile.jsp" data-ajax="false" data-transition="slide" style="background-color: #ffffff;">로그인</a>
+			<a class="main_button_home" href="JQueryMobile.jsp" data-ajax="false" 
+				style="background-color: #ffffff;">Home</a> <a class="main_button_login"
+				href="JQueryMobile.jsp#login" data-ajax="false" data-transition="slide" data-rel="dialog" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
 				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" href="reviewBoard.jsp" data-transition="slide">여행
@@ -131,7 +134,7 @@ out.write(strXML2);
 		</div>
 		<div data-role="content" style="background-color: #ffffff;">
 		<div style="height:61px;"> 
-		<a id ="reviewBoard_img_aTag" href = "#review_deteil"><img id = "reviewBoard_img1"></a>
+		<a id ="reviewBoard_img_aTag" href ="#review_deteil"><img id = "reviewBoard_img1"></a>
 		<div class = "review_title_text">
 		<h4 id = "loc"></h4>
 		<h4 id = "city"></h4>
@@ -139,29 +142,56 @@ out.write(strXML2);
 		<h4 id = "date"></h4>
 		</div>
 		<div class = "reviewBoard_title_text2">
-		<h4 id = "title"></h4>
+		<a href ="#review_deteil"><h4 id = "title"></h4></a>
 		<h4 id = "userid"></h4>
 		</div>
-		
 		</div>
-		
+		<div>
+		<a id = "ReviewWrite" href = "reviewwrite.jsp" data-transition="pop" data-rel="dialog" data-ajax="false">글쓰기</a>
+		</div>
 		</div>
 		<div data-role="footer">
 			<h3>footer</h3>
 		</div>
 	</div> <!-- review page 영역 종료 -->
 	
+	
 	<div id="review_deteil" data-role="page">
 		<div data-role="header" style="background-color: #E6E9ED;">
 			<h1>4Trevel</h1>
-			<a id="#main_button_home" data-icon="home" href="JQueryMobile.jsp" data-ajax="false" 
-				style="background-color: #ffffff;">Home</a> <a id="main_button_login"
+			<a class="main_button_home" href="#review"
+				style="background-color: #ffffff;">목록가기</a> <a class="main_button_login"
 				href="JQueryMobile.jsp" data-ajax="false" data-transition="slide" style="background-color: #ffffff;">로그인</a>
 			<hr>
 			<span class="header_naviBar"> <a id="header_naviBar_package"
 				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" href="reviewBoard.jsp" data-transition="slide">여행
 					후기</a> <a id="header_naviBar_login" href="#sign-up" data-transition="slide">회원가입</a>
 			</span>
+		</div>
+		</div>
+		
+		
+		<div id="review_write" data-role="page">
+		<div data-role="header" style="background-color: #E6E9ED;">
+		<h1>4Trevel</h1>
+		<a class="main_button_home" href="#review"
+				style="background-color: #ffffff;">목록가기</a> <a class="main_button_login"
+				href="JQueryMobile.jsp" data-ajax="false" data-transition="slide" style="background-color: #ffffff;">로그인</a>
+				<hr>
+			<span class="header_naviBar"> <a id="header_naviBar_package"
+				href="#package" data-transition="slide">패키지</a> <a id="header_naviBar_review" href="reviewBoard.jsp" data-transition="slide">여행
+					후기</a>
+		</div>
+		<div data-role="content" style="background-color: #ffffff;">
+		<div>
+		<h3>여행 후기 작성</h3><h5 id="review_write_h5">ForTravel</h5>
+		<hr><br>
+		여행 국가 : <input type = "text" id = "review_input_loc" name ="loc"> 
+		여행 도시 : <input type = "text" id = "review_input_city">
+		내용 : <p><textarea rows="20" cols="130" id="content" name="content"></textarea></p>
+		<button id ="btn1">전송</button>
+			
+		</div>
 		</div>
 		</div>
 

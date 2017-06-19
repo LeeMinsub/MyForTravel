@@ -1,37 +1,223 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @CHARSET "UTF-8";
- html, body {
-        position: relative;
-        height: 100%;
-    }
-    body {
-        background: #eee;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        color:#000;
-        margin: 0;
-        padding: 0;
-    }
-    .swiper-container {
-        width: 100%;
-        height: 100%;
-        
-    }
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-    }
+
+html, body {
+	position: relative;
+	height: 100%;
+	font-family: "Nanum Gothic", sans-serif;
+}
+
+body {
+	background: #eee;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+	font-family: "Nanum Gothic", sans-serif;
+}
+
+.subNavi{
+	background-color: #e6e9ed;
+	
+}
+
+.header_naviBar{
+	margin-left: 10px;
+}
+
+#header_naviBar_review{
+	
+	position: relative;
+	left:28%;
+}
+
+#header_naviBar_login{
+	position: relative;
+    left: 53%;
+	
+}
+
+* {
+	margin: 0;
+	padding: 0
+}
+
+a{
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+.slider_bg {
+	width: 100%;
+	height: 155px;
+	background-color: #dfdfdf;
+	position: relative;
+    right : 4%;
+    bottom: 30px;
+}
+
+.slider {
+	width: 340px;
+	margin: 0 auto;
+	height: 157px;
+	position: relative;
+	background: #ffffff;
+}
+
+.slider .controller button {
+	position: absolute;
+	height: 155px;
+	width: 33px;
+	top: 0;
+	color: #FFF;
+	border: 0;
+	background: #000;
+	cursor: pointer;
+	z-index: 1
+}
+
+.slider .controller button.next {
+	right: 0px;
+	background: url(images/next.jpg);
+	border: none;
+	font-size: 0px;
+}
+
+.slider .controller button.prev {
+	left: 0px;
+	background: url(images/prev.jpg);
+	border: none;
+	font-size: 0px;
+}
+
+.slider ul {
+	width: 500px;
+	height: 169px;
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto;
+	bottom: 16px;
+	right: 8%;
+}
+
+.slider li {
+	width: 350px;
+	height: 157px;
+	position: absolute;
+	overflow: hidden;
+	padding-top: 15px;
+	right : -10%;
+}
+
+.slider li a {
+	display: block;
+	height: 155px;
+	margin: 0 5px
+}
+
+.slider li a img {
+	width: 100%;
+}
+
+
+
+/* 메인 패키지 div 영역 CSS */
+
+
+.main_navbar{
+	background-color: #e6e9ed;
+}
+
+.main_button_home, .main_button_login{
+	position: absolute;
+	top:0;
+	background-color: #E6E9ED; 
+}
+
+.package_main_div{
+	POSITION: relative;
+    bottom: 18px;
+	height: 175px;
+}
+
+.review_main_div{
+	POSITION: relative;
+	height: 129px; 
+}
+.package_div {
+	border: 1px;
+}
+
+.package_div2 {
+	position: relative;
+	left: 52%;
+	bottom: 147px; 
+}
+
+ 
+/*메인 패키지 이미지 div 영역 CSS */
+.package_text_div {
+	position: relative;
+	
+}
+
+#package_price{
+	position: relative;
+    bottom: 22px;
+    left: 31%;
+	
+}
+.package_div_img {
+	width: 30%;
+	position: relative;
+	
+}
+
+.package_img{
+	width: 150px;
+	
+}
+
+#packagePage_img1,#packagePage_img2,#packagePage_img3,#packagePage_img4,#packagePage_img5 {
+	width: 150px;
+}
+
+.Package_page_imgDiv{ 
+	    position: relative;
+    left: 54%;
+    bottom: 113px;
+    
+}
+h5{
+	font-size: 11px;
+}
+.packagePage_heaght{
+	height: 125px;
+}
+
+#reviewBoard_img_aTag{
+	    width: 80px;
+    position: relative;
+    left: 78%;
+}
+#reviewBoard_img1{
+	width: 80px;	
+}
+.review_title_text{
+	position: relative;
+    bottom: 57px;
+    font-size: 11px;
+    right: 7px;
+}
+	
+.reviewBoard_title_text2{
+	position: relative;
+    bottom: 106px;
+    left: 47%;
+    font-size: 11px;
+}
+
